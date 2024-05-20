@@ -8,7 +8,6 @@ public class SpringbootMysqlDemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootMysqlDemoApplication.class, args);
-		System.out.print("Hello world");
 	}
 
 }
