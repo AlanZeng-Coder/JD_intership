@@ -2,8 +2,4 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springbootmybatisdemo.mapper.UserMapper">
 
-    <select id="findAll" resultType="com.example.springbootmybatisdemo.model.User">
-        SELECT * FROM users
-    </select>
-
 </mapper>
