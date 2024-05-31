@@ -1,44 +1,36 @@
-package com.example.springbootmybatisdemo.model;
-
+package com.example.springbootmybatisdemo.dto;
 import java.math.BigDecimal;
 import java.util.Date;
-public class PickUpPoint {
-    private Long id;
+
+public class CreatePickUpPointParam {
     private String name;
     private String phoneNumber;
     private String province;
-    private Integer provinceId;
+    private int provinceId;
     private String city;
-    private Integer cityId;
+    private int cityId;
     private String district;
-    private Integer districtId;
+    private int districtId;
     private String detailedAddress;
     private String openTime;
     private String closeTime;
-    private Long storeId;
+    private long storeId;
     private String storeName;
     private BigDecimal latitude;
     private BigDecimal longitude;
     private Byte status;
-    private Integer transitTime;
+    private int transitTime;
     private String serviceDay;
     private String serviceStartTime;
     private String serviceEndTime;
-    private Integer serviceDuration;
-    private Integer serviceInterval;
+    private int serviceDuration;
+    private int serviceInterval;
     private String serviceTimes;
     private Byte isDelete;
     private String createUser;
     private Date createTime;
     private String updateUser;
     private Date updateTime;
-
-    public Long getId(){
-        return id;
-    }
-    public void setId(Long id){
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -263,5 +255,4 @@ public class PickUpPoint {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
-
 }

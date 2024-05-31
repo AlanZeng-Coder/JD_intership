@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `pick_up_point` (
-                                               `id` bigint AUTO_INCREMENT PRIMARY KEY comment '主键id',
-                                               `name` varchar(40) NOT NULL comment '自提点名称',
+    `id` bigint AUTO_INCREMENT PRIMARY KEY comment '主键id',
+    `name` varchar(40) NOT NULL comment '自提点名称',
     `phone_number` varchar(14) NOT NULL comment '自提点电话',
     `province` varchar(20) NOT NULL comment '地址（省）',
     `province_id` int NOT NULL comment '省id',
@@ -28,4 +28,4 @@ CREATE TABLE IF NOT EXISTS `pick_up_point` (
     `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP comment '创建时间',
     `update_user` varchar(32) NOT NULL comment '最后更新用户',
     `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '最后更新时间'
-    ) ENGINE=InnoDB AUTO_INCREMENT=10000001 DEFAULT CHARSET=utf8 comment="自提点信息表";
+    ) ENGINE=InnoDB AUTO_INCREMENT=10000001 DEFAULT CHARSET=utf8 comment='自提点信息表';
