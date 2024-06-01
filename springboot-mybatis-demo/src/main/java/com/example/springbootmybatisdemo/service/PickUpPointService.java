@@ -12,6 +12,11 @@ public class PickUpPointService {
     private PickUpPointMapper pickUpPointMapper;
 
     public boolean insertPickUpPoint(CreatePickUpPointParam param) {
-        return pickUpPointMapper.insertPickUpPoint(param) > 0;
+        if(param.getUser().equals("AlanZeng")){
+            return false;
+        }else{
+            return pickUpPointMapper.insertPickUpPoint(param) > 0;
+        }
+
     }
 }
