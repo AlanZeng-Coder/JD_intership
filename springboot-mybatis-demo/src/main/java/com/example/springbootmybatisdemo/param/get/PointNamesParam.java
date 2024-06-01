@@ -2,7 +2,7 @@ package com.example.springbootmybatisdemo.param.get;
 
 public class PointNamesParam {
     private String storeName;
-    private String pickPointName;
+    private String pickUpPointName;
     private Byte status;
 
     public void setStatus(Byte status) {
@@ -13,12 +13,12 @@ public class PointNamesParam {
         return status;
     }
 
-    public String getPickPointName() {
-        return pickPointName;
+    public String getPickUpPointName() {
+        return pickUpPointName;
     }
 
-    public void setPickPointName(String pickPointName) {
-        this.pickPointName = pickPointName;
+    public void setPickUpPointName(String pickUpPointName) {
+        this.pickUpPointName = pickUpPointName;
     }
 
     public String getStoreName() {

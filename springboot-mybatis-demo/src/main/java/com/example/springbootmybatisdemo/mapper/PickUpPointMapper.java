@@ -30,16 +30,9 @@ public interface PickUpPointMapper {
 
     @Select("<script>" +
             "SELECT * FROM pick_up_point " +
-            "WHERE 1=1 " +
-            "<if test='param.status != null'>" +
-            "AND status = #{param.status} " +
-            "</if>" +
-            "<if test='param.pointNamesParam.storeName != null and !param.pointNamesParam.storeName.isEmpty()'>" +
-            "AND store_name LIKE CONCAT('%', #{param.pointNamesParam.storeName}, '%') " +
-            "</if>" +
-            "<if test='param.pointNamesParam.pickUpPointName != null and !param.pointNamesParam.pickUpPointName.isEmpty()'>" +
-            "AND name = #{param.pointNamesParam.pickUpPointName} " +
-            "</if>" +
+            "WHERE status = #{param.pointNamesParam.status} " +
+            "AND store_name = #{param.pointNamesParam.storeName} " +
+            "AND name = #{param.pointNamesParam.pickUpPointName}" +
             "</script>")
     @Results({
             @Result(property = "id", column = "id"),
@@ -57,8 +50,8 @@ public interface PickUpPointMapper {
             @Result(property = "phoneNumber", column = "phone_number"),
             @Result(property = "openTime", column = "open_time"),
             @Result(property = "closeTime", column = "close_time"),
-            @Result(property = "latitude", column = "latitude"),
-            @Result(property = "longitude", column = "longitude"),
+            @Result(property = "coordinate.latitude", column = "latitude"),
+            @Result(property = "coordinate.longitude", column = "longitude"),
             @Result(property = "transitTime", column = "transit_time"),
             @Result(property = "serviceDay", column = "service_day"),
             @Result(property = "serviceStartTime", column = "service_start_time"),

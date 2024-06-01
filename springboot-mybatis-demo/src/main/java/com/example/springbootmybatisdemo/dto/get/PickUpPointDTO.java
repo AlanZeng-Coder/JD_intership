@@ -2,8 +2,6 @@ package com.example.springbootmybatisdemo.dto.get;
 
 import com.example.springbootmybatisdemo.dto.Coordinate;
 
-import java.util.Date;
-
 public class PickUpPointDTO {
     private Long id;
     private String storeName;
