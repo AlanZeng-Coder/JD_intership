@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class PickUpPointInfoParam {
+
     private String name;
     private String phoneNumber;
     private String province;

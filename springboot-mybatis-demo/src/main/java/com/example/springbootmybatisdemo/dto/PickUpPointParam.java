@@ -1,14 +1,12 @@
 package com.example.springbootmybatisdemo.dto;
-import java.math.BigDecimal;
-import java.util.Date;
 
-public class CreatePickUpPointParam {
-    private Long id;
+public class PickUpPointParam {
+    private Long tenantId;
     private String userName;
     private PickUpPointInfoParam pickUpPointInfoParam;
 
-    public Long getId(){
-        return id;
+    public Long getTenantId(){
+        return tenantId;
 }
     public String getUser(){
         return userName;
@@ -17,8 +15,8 @@ public class CreatePickUpPointParam {
         return pickUpPointInfoParam;
     }
 
-    public void setId(Long id){
-        this.id = id;
+    public void setTenantId(Long tenantId){
+        this.tenantId = tenantId;
     }
     public void setUser(String user){
         this.userName = user;

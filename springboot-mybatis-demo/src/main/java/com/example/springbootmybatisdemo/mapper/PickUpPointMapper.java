@@ -2,7 +2,6 @@ package com.example.springbootmybatisdemo.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import com.example.springbootmybatisdemo.dto.*;
 
 @Mapper
@@ -14,7 +13,7 @@ public interface PickUpPointMapper {
             "service_start_time, service_end_time, service_duration, service_interval, service_times, is_delete,",
             "create_user, create_time, update_user, update_time)",
             "VALUES",
-            "(#{userName}, #{pickUpPointInfoParam.phoneNumber}, #{pickUpPointInfoParam.province},",
+            "(#{pickUpPointInfoParam.name}, #{pickUpPointInfoParam.phoneNumber}, #{pickUpPointInfoParam.province},",
             "#{pickUpPointInfoParam.provinceId}, #{pickUpPointInfoParam.city}, #{pickUpPointInfoParam.cityId},",
             "#{pickUpPointInfoParam.district}, #{pickUpPointInfoParam.districtId}, #{pickUpPointInfoParam.detailedAddress},",
             "#{pickUpPointInfoParam.openTime}, #{pickUpPointInfoParam.closeTime}, #{pickUpPointInfoParam.storeId},",
@@ -24,7 +23,7 @@ public interface PickUpPointMapper {
             "#{pickUpPointInfoParam.serviceDuration}, #{pickUpPointInfoParam.serviceInterval}, #{pickUpPointInfoParam.serviceTimes},",
             "0, #{userName}, NOW(), #{userName}, NOW())"
     })
-    int  insertPickUpPoint(CreatePickUpPointParam createPickUpPointParam);
+    int  insertPickUpPoint(PickUpPointParam pickUpPointParam);
 }
 
 

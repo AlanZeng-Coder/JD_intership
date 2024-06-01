@@ -1,6 +1,6 @@
 package com.example.springbootmybatisdemo.service;
 
-import com.example.springbootmybatisdemo.dto.CreatePickUpPointParam;
+import com.example.springbootmybatisdemo.dto.PickUpPointParam;
 import com.example.springbootmybatisdemo.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ public class PickUpPointService {
     @Autowired
     private PickUpPointMapper pickUpPointMapper;
 
-    public boolean insertPickUpPoint(CreatePickUpPointParam param) {
+    public boolean insertPickUpPoint(PickUpPointParam param) {
         if(param.getUser().equals("AlanZeng")){
             return false;
         }else{
