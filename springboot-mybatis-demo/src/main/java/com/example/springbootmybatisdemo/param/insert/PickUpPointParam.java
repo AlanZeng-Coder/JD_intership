@@ -1,4 +1,6 @@
-package com.example.springbootmybatisdemo.dto;
+package com.example.springbootmybatisdemo.param.insert;
+
+import com.example.springbootmybatisdemo.param.insert.PickUpPointInfoParam;
 
 public class PickUpPointParam {
     private Long tenantId;

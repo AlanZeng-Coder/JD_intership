@@ -1,26 +1,26 @@
-package com.example.springbootmybatisdemo.dto;
+package com.example.springbootmybatisdemo.dto.get;
 
 import com.example.springbootmybatisdemo.dto.Coordinate;
-import java.math.BigDecimal;
+
 import java.util.Date;
 
-public class PickUpPointInfoParam {
-
-    private String name;
-    private String phoneNumber;
+public class PickUpPointDTO {
+    private Long id;
+    private String storeName;
+    private Long storeId;
+    private String pickUpPointName;
+    private byte status;
     private String province;
-    private int provinceId;
+    private Integer provinceId;
     private String city;
     private int cityId;
     private String district;
     private int districtId;
     private String detailedAddress;
+    private String phoneNumber;
     private String openTime;
     private String closeTime;
-    private long storeId;
-    private String storeName;
     private Coordinate coordinate;
-    private Byte status;
     private int transitTime;
     private String serviceDay;
     private String serviceStartTime;
@@ -28,19 +28,8 @@ public class PickUpPointInfoParam {
     private int serviceDuration;
     private int serviceInterval;
     private String serviceTimes;
-    private Byte isDelete;
-    private String createUser;
-    private Date createTime;
-    private String updateUser;
-    private Date updateTime;
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -206,43 +195,43 @@ public class PickUpPointInfoParam {
         this.serviceTimes = serviceTimes;
     }
 
-    public Byte getIsDelete() {
-        return isDelete;
+    public String getPickUpPointName() {
+        return pickUpPointName;
     }
 
-    public void setIsDelete(Byte isDelete) {
-        this.isDelete = isDelete;
+    public Long getId() {
+        return id;
     }
 
-    public String getCreateUser() {
-        return createUser;
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
     }
 
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
+    public void setDistrictId(int districtId) {
+        this.districtId = districtId;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public void setPickUpPointName(String pickUpPointName) {
+        this.pickUpPointName = pickUpPointName;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getUpdateUser() {
-        return updateUser;
+    public void setServiceDuration(int serviceDuration) {
+        this.serviceDuration = serviceDuration;
     }
 
-    public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
+    public void setServiceInterval(int serviceInterval) {
+        this.serviceInterval = serviceInterval;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public void setStatus(byte status) {
+        this.status = status;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setTransitTime(int transitTime) {
+        this.transitTime = transitTime;
     }
 }
