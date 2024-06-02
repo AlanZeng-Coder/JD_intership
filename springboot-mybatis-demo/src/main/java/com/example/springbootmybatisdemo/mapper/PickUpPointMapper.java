@@ -2,8 +2,10 @@ package com.example.springbootmybatisdemo.mapper;
 
 import com.example.springbootmybatisdemo.param.get.GetPickUpPointParam;
 import com.example.springbootmybatisdemo.param.insert.PickUpPointParam;
+import com.example.springbootmybatisdemo.param.set.SetPointParam;
 import org.apache.ibatis.annotations.*;
 import com.example.springbootmybatisdemo.dto.get.*;
+
 
 import java.util.List;
 
@@ -61,7 +63,8 @@ public interface PickUpPointMapper {
             @Result(property = "serviceTimes", column = "service_times")
     })
     List<PickUpPointDTO> getPickUpPoints(@Param("param") GetPickUpPointParam param);
-
+    @Update("UPDATE pick_up_point SET status = #{param.status} WHERE id = #{param.pickUpPointId}")
+    boolean setPickUpPointStatus(@Param("param") SetPointParam param);
 }
 
 

@@ -3,6 +3,7 @@ package com.example.springbootmybatisdemo.controller;
 import com.example.springbootmybatisdemo.dto.get.PickUpPointInfoDTO;
 import com.example.springbootmybatisdemo.param.get.GetPickUpPointParam;
 import com.example.springbootmybatisdemo.param.insert.PickUpPointParam;
+import com.example.springbootmybatisdemo.param.set.SetPointParam;
 import com.example.springbootmybatisdemo.service.PickUpPointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,5 +26,8 @@ public class PickUpPointController {
         PickUpPointInfoDTO pickUpPointInfoDTO = pickUpPointService.getPickUpPoints(param);
         return ResponseEntity.ok(pickUpPointInfoDTO);
     }
-
+    @PostMapping("/setPickUpPointStatus")
+    public boolean setPickUpPointStatus(@RequestBody SetPointParam param){
+        return pickUpPointService.setPickUpPointsStatus(param);
+    }
 }

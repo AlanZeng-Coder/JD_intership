@@ -2,6 +2,7 @@ package com.example.springbootmybatisdemo.service;
 
 import com.example.springbootmybatisdemo.param.insert.PickUpPointParam;
 import com.example.springbootmybatisdemo.mapper.*;
+import com.example.springbootmybatisdemo.param.set.SetPointParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.springbootmybatisdemo.dto.get.*;
@@ -32,5 +33,9 @@ public class PickUpPointService {
         pickUpPointInfoDTO.setPickUpPointDTOList(pickUpPointDTOList);
 
         return pickUpPointInfoDTO;
+    }
+
+    public boolean setPickUpPointsStatus(SetPointParam param){
+        return pickUpPointMapper.setPickUpPointStatus(param);
     }
 }
