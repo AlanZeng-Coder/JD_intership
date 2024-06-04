@@ -1,5 +1,6 @@
 package com.example.springbootmybatisdemo.controller;
 
+import com.example.springbootmybatisdemo.dto.Response;
 import com.example.springbootmybatisdemo.dto.get.PickUpPointDTO;
 import com.example.springbootmybatisdemo.dto.get.PickUpPointInfoDTO;
 import com.example.springbootmybatisdemo.param.delete.DeletePointParam;
@@ -21,31 +22,29 @@ public class PickUpPointController {
     private PickUpPointService pickUpPointService;
 
     @PostMapping("/createPickUpPoint")
-    public boolean createPickUpPoint(@RequestBody PickUpPointParam param) {
+    public Response<Boolean> createPickUpPoint(@RequestBody PickUpPointParam param) {
         return pickUpPointService.createPickUpPoint(param);
     }
 
     @PostMapping("/getPickUpPoint")
-    public ResponseEntity<PickUpPointInfoDTO> getPickUpPoint(@RequestBody GetPickUpPointParam param) {
-        PickUpPointInfoDTO pickUpPointInfoDTO = pickUpPointService.getPickUpPoints(param);
-        return ResponseEntity.ok(pickUpPointInfoDTO);
+    public Response<PickUpPointInfoDTO> getPickUpPoint(@RequestBody GetPickUpPointParam param) {
+        return pickUpPointService.getPickUpPoints(param);
     }
     @PostMapping("/setPickUpPointStatus")
-    public boolean setPickUpPointStatus(@RequestBody SetPointParam param){
-        return pickUpPointService.setPickUpPointsStatus(param);
+    public Response<Boolean> setPickUpPointStatus(@RequestBody SetPointParam param){
+        return pickUpPointService.setPickUpPointStatus(param);
     }
     @PostMapping("/updatePickUpPointInfo")
-    public boolean updatePickUpPointInfo(@RequestBody PickUpPointParam param){
+    public Response<Boolean> updatePickUpPointInfo(@RequestBody PickUpPointParam param){
         return pickUpPointService.updatePickPointInfo(param);
     }
 
     @DeleteMapping("/deletePickUpPoint")
-    public boolean deletePickUpPoint(@RequestBody DeletePointParam param){
+    public Response<Boolean> deletePickUpPoint(@RequestBody DeletePointParam param){
         return pickUpPointService.deletePickUpPoint(param);
     }
     @PostMapping("/getPickUpPointByStoreId")
-    public ResponseEntity<PickUpPointInfoDTO> getPickUpPointByStoreId(@RequestBody GetPointByStoreIdParam param){
-        PickUpPointInfoDTO pickUpPointInfoDTO = pickUpPointService.getPickUpPointByStoreId(param);
-        return ResponseEntity.ok(pickUpPointInfoDTO);
+    public Response<PickUpPointInfoDTO> getPickUpPointByStoreId(@RequestBody GetPointByStoreIdParam param){
+        return pickUpPointService.getPickUpPointByStoreId(param);
     }
 }

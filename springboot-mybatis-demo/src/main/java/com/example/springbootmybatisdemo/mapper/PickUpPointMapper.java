@@ -32,7 +32,7 @@ public interface PickUpPointMapper {
             "#{param.pickUpPointInfoParam.serviceDuration}, #{param.pickUpPointInfoParam.serviceInterval}, #{param.pickUpPointInfoParam.serviceTimes},",
             "0, #{param.user}, NOW(), #{param.user}, NOW())"
     })
-    int  createPickUpPoint(@Param("param") PickUpPointParam param);
+    boolean  createPickUpPoint(@Param("param") PickUpPointParam param);
 
     @Select("<script>" +
             "SELECT * FROM pick_up_point " +
