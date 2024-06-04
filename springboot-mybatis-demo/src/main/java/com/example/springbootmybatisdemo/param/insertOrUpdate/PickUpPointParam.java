@@ -1,17 +1,15 @@
-package com.example.springbootmybatisdemo.param.insert;
-
-import com.example.springbootmybatisdemo.param.insert.PickUpPointInfoParam;
+package com.example.springbootmybatisdemo.param.insertOrUpdate;
 
 public class PickUpPointParam {
     private Long tenantId;
-    private String userName;
+    private String user;
     private PickUpPointInfoParam pickUpPointInfoParam;
 
     public Long getTenantId(){
         return tenantId;
 }
     public String getUser(){
-        return userName;
+        return user;
     }
     public PickUpPointInfoParam getPickUpPointInfoParam() {
         return pickUpPointInfoParam;
@@ -21,7 +19,7 @@ public class PickUpPointParam {
         this.tenantId = tenantId;
     }
     public void setUser(String user){
-        this.userName = user;
+        this.user = user;
     }
     public void setPickUpPointInfoParam(PickUpPointInfoParam pickUpPointInfoParam) {
         this.pickUpPointInfoParam = pickUpPointInfoParam;

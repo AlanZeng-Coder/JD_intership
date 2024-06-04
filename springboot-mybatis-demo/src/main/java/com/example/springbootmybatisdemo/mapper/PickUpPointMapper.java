@@ -1,10 +1,13 @@
 package com.example.springbootmybatisdemo.mapper;
 
+import com.example.springbootmybatisdemo.param.delete.DeletePointParam;
 import com.example.springbootmybatisdemo.param.get.GetPickUpPointParam;
-import com.example.springbootmybatisdemo.param.insert.PickUpPointParam;
+import com.example.springbootmybatisdemo.param.insertOrUpdate.PickUpPointParam;
 import com.example.springbootmybatisdemo.param.set.SetPointParam;
 import org.apache.ibatis.annotations.*;
 import com.example.springbootmybatisdemo.dto.get.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 import java.util.List;
@@ -18,17 +21,17 @@ public interface PickUpPointMapper {
             "service_start_time, service_end_time, service_duration, service_interval, service_times, is_delete,",
             "create_user, create_time, update_user, update_time)",
             "VALUES",
-            "(#{pickUpPointInfoParam.name}, #{pickUpPointInfoParam.phoneNumber}, #{pickUpPointInfoParam.province},",
-            "#{pickUpPointInfoParam.provinceId}, #{pickUpPointInfoParam.city}, #{pickUpPointInfoParam.cityId},",
-            "#{pickUpPointInfoParam.district}, #{pickUpPointInfoParam.districtId}, #{pickUpPointInfoParam.detailedAddress},",
-            "#{pickUpPointInfoParam.openTime}, #{pickUpPointInfoParam.closeTime}, #{pickUpPointInfoParam.storeId},",
-            "#{pickUpPointInfoParam.storeName}, #{pickUpPointInfoParam.coordinate.latitude},",
-            "#{pickUpPointInfoParam.coordinate.longitude}, #{pickUpPointInfoParam.status}, #{pickUpPointInfoParam.transitTime},",
-            "#{pickUpPointInfoParam.serviceDay}, #{pickUpPointInfoParam.serviceStartTime}, #{pickUpPointInfoParam.serviceEndTime},",
-            "#{pickUpPointInfoParam.serviceDuration}, #{pickUpPointInfoParam.serviceInterval}, #{pickUpPointInfoParam.serviceTimes},",
-            "0, #{userName}, NOW(), #{userName}, NOW())"
+            "(#{param.pickUpPointInfoParam.pickUpPointName}, #{param.pickUpPointInfoParam.phoneNumber}, #{param.pickUpPointInfoParam.province},",
+            "#{param.pickUpPointInfoParam.provinceId}, #{param.pickUpPointInfoParam.city}, #{param.pickUpPointInfoParam.cityId},",
+            "#{param.pickUpPointInfoParam.district}, #{param.pickUpPointInfoParam.districtId}, #{param.pickUpPointInfoParam.detailedAddress},",
+            "#{param.pickUpPointInfoParam.openTime}, #{param.pickUpPointInfoParam.closeTime}, #{param.pickUpPointInfoParam.storeId},",
+            "#{param.pickUpPointInfoParam.storeName}, #{param.pickUpPointInfoParam.coordinate.latitude},",
+            "#{param.pickUpPointInfoParam.coordinate.longitude}, #{param.pickUpPointInfoParam.status}, #{param.pickUpPointInfoParam.transitTime},",
+            "#{param.pickUpPointInfoParam.serviceDay}, #{param.pickUpPointInfoParam.serviceStartTime}, #{param.pickUpPointInfoParam.serviceEndTime},",
+            "#{param.pickUpPointInfoParam.serviceDuration}, #{param.pickUpPointInfoParam.serviceInterval}, #{param.pickUpPointInfoParam.serviceTimes},",
+            "0, #{param.user}, NOW(), #{param.user}, NOW())"
     })
-    int  insertPickUpPoint(PickUpPointParam pickUpPointParam);
+    int  createPickUpPoint(@Param("param") PickUpPointParam param);
 
     @Select("<script>" +
             "SELECT * FROM pick_up_point " +
@@ -65,6 +68,38 @@ public interface PickUpPointMapper {
     List<PickUpPointDTO> getPickUpPoints(@Param("param") GetPickUpPointParam param);
     @Update("UPDATE pick_up_point SET status = #{param.status} WHERE id = #{param.pickUpPointId}")
     boolean setPickUpPointStatus(@Param("param") SetPointParam param);
+
+    @Update("UPDATE pick_up_point " +
+            "SET store_name = #{param.pickUpPointInfoParam.storeName}, " +
+            "store_id = #{param.pickUpPointInfoParam.storeId}, " +
+            "name = #{param.pickUpPointInfoParam.pickUpPointName}, " +
+            "status = #{param.pickUpPointInfoParam.status}, " +
+            "province = #{param.pickUpPointInfoParam.province}, " +
+            "province_id = #{param.pickUpPointInfoParam.provinceId}, " +
+            "city = #{param.pickUpPointInfoParam.city}, " +
+            "city_id = #{param.pickUpPointInfoParam.cityId}, " +
+            "district = #{param.pickUpPointInfoParam.district}, " +
+            "district_id = #{param.pickUpPointInfoParam.districtId}, " +
+            "detailed_address = #{param.pickUpPointInfoParam.detailedAddress}, " +
+            "phone_number = #{param.pickUpPointInfoParam.phoneNumber}, " +
+            "open_time = #{param.pickUpPointInfoParam.openTime}, " +
+            "close_time = #{param.pickUpPointInfoParam.closeTime}, " +
+            "latitude = #{param.pickUpPointInfoParam.coordinate.latitude}, " +
+            "longitude = #{param.pickUpPointInfoParam.coordinate.longitude}, " +
+            "transit_time = #{param.pickUpPointInfoParam.transitTime}, " +
+            "service_day = #{param.pickUpPointInfoParam.serviceDay}, " +
+            "service_start_time = #{param.pickUpPointInfoParam.serviceStartTime}, " +
+            "service_end_time = #{param.pickUpPointInfoParam.serviceEndTime}, " +
+            "service_duration = #{param.pickUpPointInfoParam.serviceDuration}, " +
+            "service_interval = #{param.pickUpPointInfoParam.serviceInterval}, " +
+            "service_times = #{param.pickUpPointInfoParam.serviceTimes}, " +
+            "update_user = #{param.user}, " +
+            "update_time = now() " +
+            "WHERE id = #{param.pickUpPointInfoParam.pickUpPointId}")
+    boolean updatePickUpPointInfo(@Param("param") PickUpPointParam param);
+    @Delete("DELETE FROM pick_up_point WHERE id = #{param.pickUpPointId}")
+    boolean deletePickUpPoint(@Param("param") DeletePointParam param);
+
 }
 
 

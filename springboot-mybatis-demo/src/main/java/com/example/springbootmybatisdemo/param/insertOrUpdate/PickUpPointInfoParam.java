@@ -1,13 +1,16 @@
-package com.example.springbootmybatisdemo.param.insert;
+package com.example.springbootmybatisdemo.param.insertOrUpdate;
 
 import com.example.springbootmybatisdemo.dto.Coordinate;
-import java.math.BigDecimal;
+
 import java.util.Date;
 
 public class PickUpPointInfoParam {
 
-    private String name;
-    private String phoneNumber;
+    private Long pickUpPointId;
+    private String storeName;
+    private long storeId;
+    private String pickUpPointName;
+    private Byte status;
     private String province;
     private int provinceId;
     private String city;
@@ -15,12 +18,11 @@ public class PickUpPointInfoParam {
     private String district;
     private int districtId;
     private String detailedAddress;
+    private String phoneNumber;
     private String openTime;
     private String closeTime;
-    private long storeId;
-    private String storeName;
     private Coordinate coordinate;
-    private Byte status;
+
     private int transitTime;
     private String serviceDay;
     private String serviceStartTime;
@@ -28,18 +30,13 @@ public class PickUpPointInfoParam {
     private int serviceDuration;
     private int serviceInterval;
     private String serviceTimes;
-    private Byte isDelete;
-    private String createUser;
-    private Date createTime;
-    private String updateUser;
-    private Date updateTime;
 
-    public String getName() {
-        return name;
+    public String getPickUpPointName() {
+        return pickUpPointName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPickUpPointName(String pickUpPointName) {
+        this.pickUpPointName = pickUpPointName;
     }
 
     public String getPhoneNumber() {
@@ -206,43 +203,39 @@ public class PickUpPointInfoParam {
         this.serviceTimes = serviceTimes;
     }
 
-    public Byte getIsDelete() {
-        return isDelete;
+    public void setPickUpPointId(Long pickUpPointId) {
+        this.pickUpPointId = pickUpPointId;
     }
 
-    public void setIsDelete(Byte isDelete) {
-        this.isDelete = isDelete;
+    public Long getPickUpPointId() {
+        return pickUpPointId;
     }
 
-    public String getCreateUser() {
-        return createUser;
+    public void setTransitTime(int transitTime) {
+        this.transitTime = transitTime;
     }
 
-    public void setCreateUser(String createUser) {
-        this.createUser = createUser;
+    public void setServiceInterval(int serviceInterval) {
+        this.serviceInterval = serviceInterval;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public void setServiceDuration(int serviceDuration) {
+        this.serviceDuration = serviceDuration;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setDistrictId(int districtId) {
+        this.districtId = districtId;
     }
 
-    public String getUpdateUser() {
-        return updateUser;
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
     }
 
-    public void setUpdateUser(String updateUser) {
-        this.updateUser = updateUser;
+    public void setProvinceId(int provinceId) {
+        this.provinceId = provinceId;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setStoreId(long storeId) {
+        this.storeId = storeId;
     }
 }
