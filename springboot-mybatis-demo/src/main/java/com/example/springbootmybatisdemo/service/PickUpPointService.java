@@ -47,4 +47,14 @@ public class PickUpPointService {
    public boolean deletePickUpPoint(DeletePointParam param){
         return pickUpPointMapper.deletePickUpPoint(param);
    }
+
+    public PickUpPointInfoDTO getPickUpPointByStoreId(GetPointByStoreIdParam param) {
+        List<PickUpPointDTO> pickUpPointDTOList = pickUpPointMapper.getPickUpPointByStoreId(param);
+
+        PickUpPointInfoDTO pickUpPointInfoDTO = new PickUpPointInfoDTO();
+        pickUpPointInfoDTO.setTenantId(param.getTenantId());
+        pickUpPointInfoDTO.setPickUpPointDTOList(pickUpPointDTOList);
+
+        return pickUpPointInfoDTO;
+    }
 }
