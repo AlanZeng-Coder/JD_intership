@@ -38,7 +38,8 @@ public interface PickUpPointMapper {
             "SELECT * FROM pick_up_point " +
             "WHERE status = #{param.pointNamesParam.status} " +
             "AND store_name = #{param.pointNamesParam.storeName} " +
-            "AND name = #{param.pointNamesParam.pickUpPointName}" +
+            "AND name = #{param.pointNamesParam.pickUpPointName} " +
+            "AND is_delete = 0" +
             "</script>")
     @Results({
             @Result(property = "id", column = "id"),
@@ -98,10 +99,10 @@ public interface PickUpPointMapper {
             "update_time = now() " +
             "WHERE id = #{param.pickUpPointInfoParam.pickUpPointId}")
     boolean updatePickUpPointInfo(@Param("param") PickUpPointParam param);
-    @Delete("DELETE FROM pick_up_point WHERE id = #{param.pickUpPointId}")
+    @Update("UPDATE pick_up_point SET is_delete = 1 WHERE id = #{param.pickUpPointId}")
     boolean deletePickUpPoint(@Param("param") DeletePointParam param);
 
-    @Select("SELECT * FROM pick_up_point WHERE store_id = #{param.storeId}")
+    @Select("SELECT * FROM pick_up_point WHERE store_id = #{param.storeId} AND is_delete = 0")
     @Results({
             @Result(property = "id", column = "id"),
             @Result(property = "storeName", column = "store_name"),

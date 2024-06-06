@@ -1,5 +1,6 @@
 package com.example.springbootmybatisdemo.controller;
 
+import com.example.springbootmybatisdemo.dto.Page;
 import com.example.springbootmybatisdemo.dto.Response;
 import com.example.springbootmybatisdemo.dto.get.PickUpPointDTO;
 import com.example.springbootmybatisdemo.dto.get.PickUpPointInfoDTO;
@@ -27,7 +28,7 @@ public class PickUpPointController {
     }
 
     @PostMapping("/getPickUpPoint")
-    public Response<PickUpPointInfoDTO> getPickUpPoint(@RequestBody GetPickUpPointParam param) {
+    public Response<Page<PickUpPointInfoDTO>> getPickUpPoint(@RequestBody GetPickUpPointParam param) {
         return pickUpPointService.getPickUpPoints(param);
     }
     @PostMapping("/setPickUpPointStatus")
@@ -39,7 +40,7 @@ public class PickUpPointController {
         return pickUpPointService.updatePickPointInfo(param);
     }
 
-    @DeleteMapping("/deletePickUpPoint")
+    @PostMapping("/deletePickUpPoint")
     public Response<Boolean> deletePickUpPoint(@RequestBody DeletePointParam param){
         return pickUpPointService.deletePickUpPoint(param);
     }

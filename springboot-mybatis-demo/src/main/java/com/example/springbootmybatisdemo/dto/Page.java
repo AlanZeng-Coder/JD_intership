@@ -7,9 +7,9 @@ public class Page<T> {
     private int currentPageNumber;
     private long totalElements;
     private int totalPages;
-    private List<T> content;
+    private T content;
 
-    public Page(int pageSize, int currentPageNumber, long totalElements, List<T> content, int totalPages){
+    public Page(int pageSize, int currentPageNumber, long totalElements, T content, int totalPages){
         this.content = content;
         this.currentPageNumber = currentPageNumber;
         this.pageSize = pageSize;
@@ -32,7 +32,7 @@ public class Page<T> {
         return totalPages;
     }
 
-    public List<T> getContent() {
+    public T getContent() {
         return content;
     }
 
@@ -40,7 +40,7 @@ public class Page<T> {
         return totalElements;
     }
 
-    public void setContent(List<T> content) {
+    public void setContent(T content) {
         this.content = content;
     }
 

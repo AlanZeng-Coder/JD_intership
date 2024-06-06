@@ -8,6 +8,7 @@ import com.example.springbootmybatisdemo.param.set.SetPointParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.springbootmybatisdemo.dto.get.*;
+import com.example.springbootmybatisdemo.dto.Page;
 import com.example.springbootmybatisdemo.param.get.*;
 
 import java.util.List;
@@ -33,19 +34,35 @@ public class PickUpPointService {
         }
     }
 
-    public Response<PickUpPointInfoDTO> getPickUpPoints(GetPickUpPointParam param) {
+    public Response<Page<PickUpPointInfoDTO>> getPickUpPoints(GetPickUpPointParam param) {
         List<PickUpPointDTO> pickUpPointDTOList = pickUpPointMapper.getPickUpPoints(param);
+
+        int page = param.getPageParam().getPage();
+        int pageSize = param.getPageParam().getPageSize();
+
+        int totalItems = pickUpPointDTOList.size();
+        int totalPages = (int) Math.ceil((double) totalItems / pageSize);
+
+        if (page > totalPages || page < 1) {
+            return new Response<>(404, "No pick-up points found", UUID.randomUUID().toString(), null);
+        }
+        int startIndex = (page - 1) * pageSize;
+        int endIndex = Math.min(startIndex + pageSize, totalItems);
+
+        List<PickUpPointDTO> pickUpPointDTOListInPage = pickUpPointDTOList.subList(startIndex, endIndex);
 
         PickUpPointInfoDTO pickUpPointInfoDTO = new PickUpPointInfoDTO();
         pickUpPointInfoDTO.setTenantId(param.getTenantId());
         pickUpPointInfoDTO.setUser(param.getUser());
-        pickUpPointInfoDTO.setPickUpPointDTOList(pickUpPointDTOList);
+        pickUpPointInfoDTO.setPickUpPointDTOList(pickUpPointDTOListInPage);
+
+        Page<PickUpPointInfoDTO> pageObject = new Page<>(pageSize, page, totalItems, pickUpPointInfoDTO, totalPages);
 
         try {
             if (pickUpPointInfoDTO.getPickUpPointDTOList().isEmpty()) {
-                return new Response<>(404, "No pick-up points found", UUID.randomUUID().toString(), pickUpPointInfoDTO);
+                return new Response<>(404, "No pick-up points found", UUID.randomUUID().toString(), null);
             } else {
-                return new Response<>(200, "Success", UUID.randomUUID().toString(), pickUpPointInfoDTO);
+                return new Response<>(200, "Success", UUID.randomUUID().toString(), pageObject);
             }
         } catch (Exception e) {
             // Handle exception and return an error response
