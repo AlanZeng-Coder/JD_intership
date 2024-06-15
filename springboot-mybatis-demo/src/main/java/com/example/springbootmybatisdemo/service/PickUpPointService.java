@@ -5,6 +5,7 @@ import com.example.springbootmybatisdemo.param.delete.DeletePointParam;
 import com.example.springbootmybatisdemo.param.insertOrUpdate.PickUpPointParam;
 import com.example.springbootmybatisdemo.mapper.*;
 import com.example.springbootmybatisdemo.param.set.SetPointParam;
+import com.example.springbootmybatisdemo.service.validator.CreatePickUpPointValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.springbootmybatisdemo.dto.get.*;
@@ -19,8 +20,10 @@ public class PickUpPointService {
 
     @Autowired
     private PickUpPointMapper pickUpPointMapper;
-
+    @Autowired
+    private CreatePickUpPointValidator createPickUpPointValidator;
     public Response<Boolean> createPickUpPoint(PickUpPointParam param) {
+        createPickUpPointValidator.validate(param);
 
         try{
             boolean result = pickUpPointMapper.createPickUpPoint(param);

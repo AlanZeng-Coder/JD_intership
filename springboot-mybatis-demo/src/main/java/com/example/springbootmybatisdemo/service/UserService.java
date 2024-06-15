@@ -2,9 +2,9 @@ package com.example.springbootmybatisdemo.service;
 
 import com.example.springbootmybatisdemo.model.User;
 import com.example.springbootmybatisdemo.mapper.UserMapper;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
